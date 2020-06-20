@@ -76,7 +76,7 @@ public class FootballTeamsRestControllerTest {
 
 	@Test
 	public void getAllTeamsTest() throws Exception {
-		mockMvc.perform(get("/teams")).andExpect(status().isOk());
+		mockMvc.perform(get("/api/teams")).andExpect(status().isOk());
 	}
 
 }
