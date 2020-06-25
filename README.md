@@ -1,5 +1,18 @@
 # football-service
 
+## Get Standings
+
+GET http://localhost:8080/service/standing?teamName=West%20Brom&countryName=England&leagueName=Championship
+
+https://apifootball.com/documentation/#Standings
+
+https://apiv2.apifootball.com/?action=get_leagues&country_id=41&APIkey=9bb66184e0c8145384fd2cc0f7b914ada57b4e8fd2e4d6d586adcc27c257a978
+
+https://apiv2.apifootball.com/?action=get_countries&APIkey=9bb66184e0c8145384fd2cc0f7b914ada57b4e8fd2e4d6d586adcc27c257a978
+
+https://apiv2.apifootball.com/?action=get_standings&league_id=149&APIkey=9bb66184e0c8145384fd2cc0f7b914ada57b4e8fd2e4d6d586adcc27c257a978
+
+
 ## Base URL:
 GET http://localhost:8080/api/teams
 
