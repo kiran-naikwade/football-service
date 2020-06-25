@@ -15,11 +15,16 @@ public class FootballTeamService {
 
 	private static final Logger logger = LoggerFactory.getLogger(FootballTeamService.class);
 
+	
+	
+	private FootballStandingsService footballStandingsService;
+	
 	private FootballTeamRepository teamRepository;
 
 	@Autowired
-	public FootballTeamService(FootballTeamRepository teamRepository) {
+	public FootballTeamService(FootballTeamRepository teamRepository, FootballStandingsService footballStandingsService) {
 		this.teamRepository = teamRepository;
+		this.footballStandingsService = footballStandingsService;
 	}
 
 	public List<Team> findAll() {
@@ -27,6 +32,7 @@ public class FootballTeamService {
 	}
 
 	public void save(Team team) {
+		footballStandingsService.getFootballStandings();
 		logger.info("saving team: {}", team);
 		teamRepository.saveAndFlush(team);
 	}

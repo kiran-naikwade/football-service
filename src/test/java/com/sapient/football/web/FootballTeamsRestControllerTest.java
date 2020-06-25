@@ -7,9 +7,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Date;
 
-import org.junit.Before;
+import org.aspectj.lang.annotation.Before;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.mockito.Mockito;
@@ -41,14 +41,14 @@ public class FootballTeamsRestControllerTest {
 	@SpyBean
 	private FootballTeamService teamService;
 
-	@Before
-	public void setup() {
+	protected void setUp() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 	}
 
 	@Test
 	public void saveTeamTest() throws Exception {
-		//Team(String name, String city, int noOfPlayer, String country, String league, int position, Date date)
+		// Team(String name, String city, int noOfPlayer, String country, String league,
+		// int position, Date date)
 		Team team = new Team("Team1", "Pune", 20, "India", "League1", 3, new Date());
 		String teamStr = new ObjectMapper().writeValueAsString(team);
 
@@ -58,17 +58,16 @@ public class FootballTeamsRestControllerTest {
 		verify(teamService).save(Mockito.any(Team.class));
 	}
 
-
 	@Test
 	public void getByTeamNameTest() throws Exception {
 		mockMvc.perform(get("/api/teams/name/Team1")).andExpect(status().isOk());
 	}
-	
+
 	@Test
 	public void getByLeagueNameTest() throws Exception {
 		mockMvc.perform(get("/api/teams/league/League1")).andExpect(status().isOk());
 	}
-	
+
 	@Test
 	public void getByCountryNameTest() throws Exception {
 		mockMvc.perform(get("/api/teams/country/India")).andExpect(status().isOk());
